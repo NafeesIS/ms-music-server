@@ -44,7 +44,7 @@ async function run() {
 
 
         // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
+        // await client.connect();
 
 
         const classCollection = client.db("MSMusic").collection("classes");
@@ -210,6 +210,25 @@ async function run() {
             const result = await selectedClassesCollection.find(query).toArray();
             res.send(result);
         })
+
+        app.get('/selected_classes/:id', async (req, res) => {
+            const id = req.params.id;
+
+            try {
+                const filter = { _id: new ObjectId(id) };
+                const classItem = await selectedClassesCollection.findOne(filter);
+
+                if (!classItem) {
+                    return res.status(404).json({ message: 'Class not found' });
+                }
+
+                res.json(classItem);
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ message: 'Server error' });
+            }
+        });
+
 
 
         app.get('/newclasses', verifyJWT, async (req, res) => {

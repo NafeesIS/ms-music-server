@@ -187,6 +187,8 @@ async function run() {
             const result = await selectedClassesCollection.insertOne(item);
             res.send(result);
         })
+
+
         app.post('/newclasses', async (req, res) => {
             const item = req.body;
             const result = await newClassCollection.insertOne(item);

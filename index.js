@@ -211,23 +211,6 @@ async function run() {
             res.send(result);
         })
 
-        app.get('/selected_classes/:id', async (req, res) => {
-            const id = req.params.id;
-
-            try {
-                const filter = { _id: new ObjectId(id) };
-                const classItem = await selectedClassesCollection.findOne(filter);
-
-                if (!classItem) {
-                    return res.status(404).json({ message: 'Class not found' });
-                }
-
-                res.json(classItem);
-            } catch (error) {
-                console.error(error);
-                res.status(500).json({ message: 'Server error' });
-            }
-        });
 
 
 

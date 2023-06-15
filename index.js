@@ -210,6 +210,8 @@ async function run() {
             const result = await selectedClassesCollection.find(query).toArray();
             res.send(result);
         })
+
+
         app.get('/newclasses', verifyJWT, async (req, res) => {
             const email = req.query.email;
             if (!email) {

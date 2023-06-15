@@ -254,6 +254,8 @@ async function run() {
                 res.status(500).json({ message: 'Server error' });
             }
         });
+
+
         app.get('/instructors', async (req, res) => {
             const result = await instructorCollection.find().toArray();
             res.send(result);

@@ -212,8 +212,6 @@ async function run() {
         })
 
 
-
-
         app.get('/newclasses', verifyJWT, async (req, res) => {
             const email = req.query.email;
             if (!email) {

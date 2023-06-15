@@ -235,6 +235,8 @@ async function run() {
             const result = await selectedClassesCollection.deleteOne(query);
             res.send(result)
         })
+
+
         app.delete('/users/:id', async (req, res) => {
             try {
                 const id = req.params.id;

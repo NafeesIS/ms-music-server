@@ -39,6 +39,8 @@ const client = new MongoClient(uri, {
     }
 });
 
+
+
 async function run() {
     try {
 
@@ -260,7 +262,6 @@ async function run() {
             const result = await instructorCollection.find().toArray();
             res.send(result);
         })
-
 
         app.get('/feedback', async (req, res) => {
             const result = await feedbackCollection.find().toArray();
